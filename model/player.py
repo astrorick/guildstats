@@ -1,6 +1,10 @@
-from model.deck import Deck
+from dataclasses import dataclass
 
+from model.deck import Deck
+from model.match import Match
+
+@dataclass
 class Player:
-    def __init__(self, name: str, decks: list[Deck]):
-        self.Name = name
-        self.Decks = decks
+    Name: str
+    Decks: list[Deck]
+    Matches: list[Match]

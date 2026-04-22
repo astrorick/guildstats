@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run GuildStats",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${cwd}/guildstats.py",
+            "args": ["database/2025_12_21_Christmas_Tournament_1st_Edition.json"],
+            "console": "integratedTerminal"
+        }
+    ]
+}
