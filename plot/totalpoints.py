@@ -1,12 +1,11 @@
 import os
-
 import matplotlib.pyplot as plt
 import numpy as np
 
 from model.player import Player
 
 OUTPUT_IMAGE_NAME = "total_points.png"
-COLORBAR = "Set2"
+COLORBAR = "Set1"
 POINT_CATEGORIES = ["Base", "Quest", "Extra"]
 
 def _computePlayerPoints(player: Player) -> tuple[int, int, int]:
@@ -23,13 +22,17 @@ def _computePlayerPoints(player: Player) -> tuple[int, int, int]:
 def plotTotalPoints(playersList: list[Player], outputFolder: str) -> None:
     """Stacked histogram of total points per player, split by source."""
 
-    names = [p.Name for p in playersList]
+    computed = [(p.Name + ("*" if any(m.Skipped for m in p.Matches) else ""), _computePlayerPoints(p)) for p in playersList]
+    computed.sort(key = lambda item: sum(item[1]), reverse = True)
+
+    names = [name for name, _ in computed]
     categoryTotals = {cat: [] for cat in POINT_CATEGORIES}
-    for player in playersList:
-        base, quest, extra = _computePlayerPoints(player)
+    playerTotals = []
+    for _, (base, quest, extra) in computed:
         categoryTotals["Base"].append(base)
         categoryTotals["Quest"].append(quest)
         categoryTotals["Extra"].append(extra)
+        playerTotals.append(base + quest + extra)
 
     fig, ax = plt.subplots(figsize = (12, 6))
     ax.grid(axis = "y", linestyle = "--", alpha = 0.5)
@@ -42,13 +45,37 @@ def plotTotalPoints(playersList: list[Player], outputFolder: str) -> None:
     for i, category in enumerate(POINT_CATEGORIES):
         values = np.array(categoryTotals[category], dtype = int)
         ax.bar(x, values, bottom = bottoms, color = cmap(i), label = category)
+        for j, value in enumerate(values):
+            if value <= 0:
+                continue
+            ax.text(
+                x[j],
+                bottoms[j] + value / 2,
+                f"{value}",
+                ha = "center",
+                va = "center",
+                fontsize = 9,
+            )
         bottoms += values
+
+    for j, total in enumerate(playerTotals):
+        if total <= 0:
+            continue
+        ax.text(
+            x[j],
+            total,
+            f"{total}",
+            ha = "center",
+            va = "bottom",
+            fontsize = 9,
+            fontweight = "bold",
+        )
 
     ax.set_xticks(x)
     ax.set_xticklabels(names, rotation = 45, ha = "right")
     ax.set_ylabel("Total Points")
     fig.suptitle("Total Points per Player", fontsize = 14, fontweight = "bold")
-    ax.set_title("Stacked by source (Base / Quest / Extra)", fontsize = 10, style = "italic")
+    ax.set_title("Stacked by Source", fontsize = 10, style = "italic")
     ax.legend()
 
     plt.tight_layout()

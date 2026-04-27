@@ -5,6 +5,7 @@ from model.adapters import AdapterJSON
 from plot.colordist import plotColorDistribution
 from plot.sidequestsgnr import plotGenericSidequestHist
 from plot.sidequeststhm import plotThematicSidequestHist
+from plot.tablepoints import plotTablePoints
 from plot.totalpoints import plotTotalPoints
 
 OUTPUT_FOLDER = "output"
@@ -20,6 +21,7 @@ def main(argv: list[str]):
     plotColorDistribution(playersList, OUTPUT_FOLDER)
     plotGenericSidequestHist(playersList, OUTPUT_FOLDER)
     plotThematicSidequestHist(playersList, OUTPUT_FOLDER)
+    plotTablePoints(playersList, OUTPUT_FOLDER)
     plotTotalPoints(playersList, OUTPUT_FOLDER)
 
 if __name__ == "__main__":
