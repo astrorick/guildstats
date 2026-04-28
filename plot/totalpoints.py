@@ -14,7 +14,7 @@ def _computePlayerPoints(player: Player) -> tuple[int, int, int]:
         if match.Skipped:
             continue
         base += match.BasePoints
-        quest += match.QuestPoints
+        quest += min(match.QuestPoints + match.FarmingPoints, 3)
         extra += 1 if len(match.StylePoint) > 0 else 0
 
     return base, quest, extra

@@ -58,7 +58,7 @@ def plotTablePoints(playersList: list[Player], outputFolder: str) -> None:
             ax.text(
                 x[j],
                 bottoms[j] + value / 2,
-                f"{sizeCounts[size][j]}",
+                f"{sizeCounts[size][j]} ({value} pts)",
                 ha = "center",
                 va = "center",
                 fontsize = 9,
@@ -71,18 +71,25 @@ def plotTablePoints(playersList: list[Player], outputFolder: str) -> None:
         ax.text(
             x[j],
             bottoms[j],
-            f"{total}",
+            f"{total} ({bottoms[j]} pts)",
             ha = "center",
             va = "bottom",
             fontsize = 9,
             fontweight = "bold",
         )
 
+    averages = []
+    for size in sorted(TABLE_SIZES, reverse = True):
+        totalPts = sum(sizeTotals[size])
+        totalCnt = sum(sizeCounts[size])
+        avg = totalPts / totalCnt if totalCnt > 0 else 0
+        averages.append(f"avg pts {size}-player tables: {avg:.1f}")
+
     ax.set_xticks(x)
     ax.set_xticklabels(names, rotation = 45, ha = "right")
     ax.set_ylabel("Total Points")
     fig.suptitle("Total Points per Player", fontsize = 14, fontweight = "bold")
-    ax.set_title("Stacked by Table Size", fontsize = 10, style = "italic")
+    ax.set_title(f"Stacked by Table Size ({', '.join(averages)})", fontsize = 10, style = "italic")
     ax.legend()
 
     plt.tight_layout()
