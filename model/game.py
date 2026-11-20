@@ -1,5 +1,8 @@
 from dataclasses import dataclass
 
+GENERIC_SQ_NAMES = ["First Blood", "Kill Yourself", "Commander Kill", "Tu Quoque Brute"]
+THEMATIC_SQ_NAMES = ["Azorius", "Orzhov", "Boros", "Selesnya", "Dimir", "Izzet", "Simic", "Rakdos", "Golgari", "Gruul"]
+
 @dataclass
 class Game:
     Skipped: bool; Table: str

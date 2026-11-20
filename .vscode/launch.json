@@ -9,7 +9,7 @@
             "type": "debugpy",
             "request": "launch",
             "program": "${cwd}/guildstats.py",
-            "args": ["database/2025_12_21_Christmas_Tournament_1st_Edition.json"],
+            "args": ["database/mydb.json"],
             "console": "integratedTerminal"
         }
     ]
