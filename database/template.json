@@ -1,95 +1,93 @@
 {
-    "Info": {
-        "Database": {
-            "Name": "Database_Name",
-            "Version": "v0.1.0"
-        },
-
-        "Event": {
-            "Name": "Event Name",
-            "Date": "Event Date (YYYY-MM-DD)",
-            "Place": "Event Location"
-        }
+    "Database": {
+        "Name": "Database_Name",
+        "Version": "v0.2.0"
     },
-	
-    "Players": {
-        "Player 1": {
-            "Decks": {
-                "Player 1 Deck 1 Name": {"Commander": "Player 1 Deck 1 Commande", "Colors": ["W", "U", "B", "R", "G", "C"]},
-                "Player 1 Deck 2 Name": {"Commander": "Player 1 Deck 2 Commande", "Colors": ["W", "U", "B", "R", "G", "C"]}
-            },
 
-            "Matches": [
+    "Event": {
+        "Name": "Event Name",
+        "Date": "YYYY-MM-DD",
+        "Location": "Event Location"
+    },
+
+    "Tables": [
+        {"Name": "A", "Size": 4},
+        {"Name": "B", "Size": 3},
+        {"Name": "C", "Size": 3}
+    ],
+
+    "Players": [
+        {
+            "Name": "Player 1 Name",
+            "Deck": {"Name": "Player 1 Deck Name", "Commander": "Player 1 Commander Name", "Colors": ["W", "U", "B", "R", "G", "C"]},
+            "Games": [
                 {
-                    "Skipped": false, "Table": "A", "Participants": 4, "DeckUsed": "Player 1 Deck 1 Name",
-                    "Kills": 0, "Won": false, "AltWin": false, "Draw": false, "Scooped": false, "BasePoints": 0,
-                    "GnrSq": [], "ThmSq": [], "QuestPoints": 0, "FarmingPoints": 0,
-					"StylePoint": ""
+                    "Skipped": false, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
                 },
                 {
-                    "Skipped": false, "Table": "C", "Participants": 3, "DeckUsed": "Player 1 Deck 1 Name",
-                    "Kills": 0, "Won": true, "AltWin": true, "Draw": false, "Scooped": false, "BasePoints": 6,
-                    "GnrSq": [], "ThmSq": ["Simic", "Rakdos"], "QuestPoints": 2, "FarmingPoints": 0,
-					"StylePoint": "Most Flavorful Play"
+                    "Skipped": true, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
                 },
                 {
-                    "Skipped": false, "Table": "C", "Participants": 3, "DeckUsed": "Player 1 Deck 2 Name",
-                    "Kills": 1, "Won": true, "AltWin": false, "Draw": false, "Scooped": false, "BasePoints": 4,
-                    "GnrSq": [], "ThmSq": ["Simic"], "QuestPoints": 1, "FarmingPoints": 1,
-					"StylePoint": ""
-                },
-                {
-                    "Skipped": false, "Table": "A", "Participants": 4, "DeckUsed": "Player 1 Deck 2 Name",
-                    "Kills": 0, "Won": false, "AltWin": false, "Draw": true, "Scooped": false, "BasePoints": 1,
-                    "GnrSq": [], "ThmSq": ["Simic"], "QuestPoints": 1, "FarmingPoints": 2,
-					"StylePoint": "Clown Move"
-                },
-                {
-                    "Skipped": false, "Table": "B", "Participants": 3, "DeckUsed": "Player 1 Deck 1 Name",
-                    "Kills": 0, "Won": false, "AltWin": false, "Draw": false, "Scooped": false, "BasePoints": 0,
-                    "GnrSq": [], "ThmSq": [], "QuestPoints": 0, "FarmingPoints": 0,
-					"StylePoint": ""
+                    "Skipped": false, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
                 }
             ]
         },
-        "Player 2": {
-            "Decks": {
-                "Player 2 Deck 1 Name": {"Commander": "Player 2 Deck 1 Commande", "Colors": ["W", "U", "B", "R", "G", "C"]},
-                "Player 2 Deck 2 Name": {"Commander": "Player 2 Deck 2 Commande", "Colors": ["W", "U", "B", "R", "G", "C"]}
-            },
-
-            "Matches": [
+        {
+            "Name": "Player 2 Name",
+            "Deck": {"Name": "Player 2 Deck Name", "Commander": "Player 2 Commander Name", "Colors": ["W", "U", "B", "R", "G", "C"]},
+            "Games": [
                 {
-                    "Skipped": false, "Table": "A", "Participants": 4, "DeckUsed": "Player 2 Deck 1 Name",
-                    "Kills": 0, "Won": false, "AltWin": false, "Draw": false, "Scooped": false, "BasePoints": 0,
-                    "GnrSq": [], "ThmSq": [], "QuestPoints": 0, "FarmingPoints": 0,
-					"StylePoint": ""
+                    "Skipped": false, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
                 },
                 {
-                    "Skipped": false, "Table": "C", "Participants": 3, "DeckUsed": "Player 2 Deck 2 Name",
-                    "Kills": 0, "Won": true, "AltWin": true, "Draw": false, "Scooped": false, "BasePoints": 6,
-                    "GnrSq": [], "ThmSq": ["Simic", "Rakdos"], "QuestPoints": 2, "FarmingPoints": 0,
-					"StylePoint": "Most Flavorful Play"
+                    "Skipped": true, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
                 },
                 {
-                    "Skipped": false, "Table": "C", "Participants": 3, "DeckUsed": "Player 2 Deck 1 Name",
-                    "Kills": 1, "Won": true, "AltWin": false, "Draw": false, "Scooped": false, "BasePoints": 4,
-                    "GnrSq": [], "ThmSq": ["Simic"], "QuestPoints": 1, "FarmingPoints": 1,
-					"StylePoint": ""
+                    "Skipped": false, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
+                }
+            ]
+        },
+        {
+            "Name": "Player 3 Name",
+            "Deck": {"Name": "Player 3 Deck Name", "Commander": "Player 3 Commander Name", "Colors": ["W", "U", "B", "R", "G", "C"]},
+            "Games": [
+                {
+                    "Skipped": false, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
                 },
                 {
-                    "Skipped": false, "Table": "A", "Participants": 4, "DeckUsed": "Player 2 Deck 2 Name",
-                    "Kills": 0, "Won": false, "AltWin": false, "Draw": true, "Scooped": false, "BasePoints": 1,
-                    "GnrSq": [], "ThmSq": ["Simic"], "QuestPoints": 1, "FarmingPoints": 2,
-					"StylePoint": "Clown Move"
+                    "Skipped": false, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
                 },
                 {
-                    "Skipped": false, "Table": "B", "Participants": 3, "DeckUsed": "Player 2 Deck 1 Name",
-                    "Kills": 0, "Won": false, "AltWin": false, "Draw": false, "Scooped": false, "BasePoints": 0,
-                    "GnrSq": [], "ThmSq": [], "QuestPoints": 0, "FarmingPoints": 0,
-					"StylePoint": ""
+                    "Skipped": false, "Table": "A/B/C",
+                    "Won": false, "AltWin": false, "Draw": false, "Scooped": false,
+                    "Kills": 0, "GnrSq": [], "ThmSq": [],
+                    "BasePoints": 0, "QuestPoints": 0, "FarmingPoints": 0, "StylePoint": ""
                 }
             ]
         }
-    }
+    ]
 }

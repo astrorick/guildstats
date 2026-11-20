@@ -1,7 +1,7 @@
 import os
 import sys
 
-from model.adapters import AdapterJSON
+from adapters.adapter_json import AdapterJSON
 from plot.colordist import plotColorDistribution
 from plot.sidequestsgnr import plotGenericSidequestHist
 from plot.sidequeststhm import plotThematicSidequestHist

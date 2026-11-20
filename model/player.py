@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
 from model.deck import Deck
-from model.match import Match
+from model.game import Game
 
 @dataclass
 class Player:
     Name: str
-    Decks: list[Deck]
-    Matches: list[Match]
+    Deck: Deck
+    Games: list[Game]
