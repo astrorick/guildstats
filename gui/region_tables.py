@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QComboBox, QFormLayout, QGroupBox, QLineEdit, QMes
 from adapters.adapter_json import AdapterJSON
 from model.table import Table
 
-NEW_TABLE_LABEL = "+ New table"
+NEW_TABLE_LABEL = "+ New Table"
 TABLE_SIZE_MIN = 2
 TABLE_SIZE_MAX = 8
 TABLE_SIZE_DEFAULT = 4

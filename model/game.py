@@ -10,5 +10,12 @@ class Game:
     Kills: int; GnrSq: list[str]; ThmSq: list[str]
     BasePoints: int; QuestPoints: int; FarmingPoints: int; StylePoint: str
 
-    def TotalPoints(self):
-        return self.BasePoints + min(self.QuestPoints + self.FarmingPoints, 3) + (1 if len(self.StylePoint) > 0 else 0)
+    def CappedQuestPoints(self) -> int:
+        # quest and farming points count together up to 3 per game
+        return min(self.QuestPoints + self.FarmingPoints, 3)
+
+    def ExtraPoints(self) -> int:
+        return 1 if len(self.StylePoint) > 0 else 0
+
+    def TotalPoints(self) -> int:
+        return self.BasePoints + self.CappedQuestPoints() + self.ExtraPoints()

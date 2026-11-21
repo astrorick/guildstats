@@ -1,12 +1,11 @@
+import multiprocessing
 import os
 import sys
 
-from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication
 
 from adapters.adapter_json import AdapterJSON
 from gui.statmanager import StatManager
-from gui.statview import StatView
 
 def main(argv: list[str]) -> int:
     if len(argv) != 2:
@@ -21,14 +20,24 @@ def main(argv: list[str]) -> int:
         adapter = AdapterJSON.CreateEmpty(databasePath)
         print(f"Created new database: {databasePath}")
 
-    # open both windows, closing the manager quits the app
+    # StatView runs in its own process, so redrawing it never stalls StatManager; closing StatManager ends it too
+    statView = multiprocessing.get_context("spawn").Process(target = runStatView, args = (databasePath,), daemon = True)
+    statView.start()
+
+    # StatManager runs in this process
     app = QApplication(argv)
-    statView = StatView(databasePath)
-    statView.setAttribute(Qt.WidgetAttribute.WA_QuitOnClose, False)
     statManager = StatManager(adapter)
-    statView.show()
     statManager.show()
     return app.exec()
+
+def runStatView(databasePath: str) -> None:
+    # imported here, so only the StatView process loads matplotlib
+    from gui.statview import StatView
+
+    app = QApplication([])
+    statView = StatView(databasePath)
+    statView.show()
+    app.exec()
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))

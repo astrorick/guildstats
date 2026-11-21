@@ -5,7 +5,7 @@ from adapters.adapter_json import AdapterJSON
 from model.deck import DECK_COLORS, Deck
 from model.player import Player
 
-NEW_PLAYER_LABEL = "+ New player"
+NEW_PLAYER_LABEL = "+ New Player"
 
 class RegionPlayers(QGroupBox):
     Changed = Signal()

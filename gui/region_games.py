@@ -16,11 +16,11 @@ class RegionGames(QGroupBox):
 
         # input fields
         self._player = QComboBox()
-        self._player.setPlaceholderText("Select player")
+        self._player.setPlaceholderText("Select Player")
         self._player.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToContents)
         self._skipped = QCheckBox("Skipped")
         self._table = QComboBox()
-        self._table.setPlaceholderText("Select table")
+        self._table.setPlaceholderText("Select Table")
         self._table.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToContents)
         self._won = QCheckBox("Won")
         self._altWin = QCheckBox("Alt Win")
