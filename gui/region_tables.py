@@ -5,8 +5,9 @@ from adapters.adapter_json import AdapterJSON
 from model.table import Table
 
 NEW_TABLE_LABEL = "+ New Table"
-TABLE_SIZE_MIN = 2
-TABLE_SIZE_MAX = 8
+# the rules cover three- and four-player tables only
+TABLE_SIZE_MIN = 3
+TABLE_SIZE_MAX = 4
 TABLE_SIZE_DEFAULT = 4
 
 class RegionTables(QGroupBox):

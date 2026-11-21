@@ -32,9 +32,12 @@ TABLES_BY_COLOR_ONLY = 3
 # mana symbol colors, always shown with their letter
 MANA_COLORS = {"W": "#f8f0c8", "U": "#9fd4f5", "B": "#b49bc9", "R": "#f59a85", "G": "#86d0a2", "C": "#8d8a86"}
 
-# a streak is the same quest in this many consecutive games or more, shown in the quest color
+# a streak is the same thematic quest in this many consecutive games or more, shown in the quest color
 STREAK_MIN_GAMES = 2
 STREAK_COLOR = SOURCE_COLORS[1]
+
+# the Child of Alara award is a gold star: the yellow hue at its brighter step, so it stays apart from the first table color
+AWARD_COLOR = "#eda100"
 
 # sizes: text follows the window height, everything else follows the text
 BASE_FONT_SHARE = 1 / 56

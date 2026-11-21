@@ -1,12 +1,13 @@
-from PySide6.QtWidgets import QCheckBox, QComboBox, QFormLayout, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit, QPushButton, QSpinBox, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QCheckBox, QComboBox, QFormLayout, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QPushButton, QSpinBox, QVBoxLayout, QWidget
 
 from adapters.adapter_json import AdapterJSON
 from gui.region_tables import tableLabel
-from model.game import GENERIC_SQ_NAMES, THEMATIC_SQ_NAMES, Game
+from model.game import GENERIC_SQ_NAMES, STYLE_POINT_NAMES, THEMATIC_SQ_NAMES, Game
 from model.table import Table
 
 THEMATIC_SQ_COLUMNS = 5
 ROW_SPACING = 16
+NO_STYLE_POINT_LABEL = "None"
 
 class RegionGames(QGroupBox):
     def __init__(self, adapter: AdapterJSON):
@@ -32,7 +33,11 @@ class RegionGames(QGroupBox):
         self._basePoints = QSpinBox()
         self._questPoints = QSpinBox()
         self._farmingPoints = QSpinBox()
-        self._stylePoint = QLineEdit()
+        self._stylePoint = QComboBox()
+        self._stylePoint.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToContents)
+        self._stylePoint.addItem(NO_STYLE_POINT_LABEL, "")
+        for name in STYLE_POINT_NAMES:
+            self._stylePoint.addItem(name, name)
         self._saveButton = QPushButton("Save")
 
         # signals
@@ -55,7 +60,7 @@ class RegionGames(QGroupBox):
             "Generic": _row(*self._gnrSq.values()),
             "Thematic": thmSqGrid,
             "Points": _row(_pair("Base", self._basePoints), _pair("Quest", self._questPoints), _pair("Farming", self._farmingPoints)),
-            "Style": self._stylePoint,
+            "Style": _row(self._stylePoint),
         }
 
         form = QFormLayout()
@@ -94,7 +99,7 @@ class RegionGames(QGroupBox):
             checkBox.setChecked(False)
         for spinBox in [self._kills, self._basePoints, self._questPoints, self._farmingPoints]:
             spinBox.setValue(0)
-        self._stylePoint.clear()
+        self._stylePoint.setCurrentIndex(0)
 
     def _onSkippedToggled(self, skipped: bool) -> None:
         # a skipped game has no details
@@ -127,7 +132,7 @@ class RegionGames(QGroupBox):
                 BasePoints = self._basePoints.value(),
                 QuestPoints = self._questPoints.value(),
                 FarmingPoints = self._farmingPoints.value(),
-                StylePoint = self._stylePoint.text().strip(),
+                StylePoint = self._stylePoint.currentData(),
             ),
         )
         self._reset()

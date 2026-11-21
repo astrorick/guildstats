@@ -6,7 +6,7 @@ from model.player import Player
 LINES = 6
 
 def drawStreaks(ax: Axes, players: list[Player]) -> None:
-    """Ongoing streaks, longest first: the same quest completed in each of a player's last games."""
+    """Ongoing streaks, longest first: the same thematic quest completed in each of a player's last games."""
 
     theme.styleAxes(ax)
     ax.set_xlim(0, 1)

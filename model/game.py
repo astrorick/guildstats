@@ -1,7 +1,13 @@
 from dataclasses import dataclass
 
 GENERIC_SQ_NAMES = ["First Blood", "Kill Yourself", "Commander Kill", "Tu Quoque Brute"]
-THEMATIC_SQ_NAMES = ["Azorius", "Orzhov", "Boros", "Selesnya", "Dimir", "Izzet", "Simic", "Rakdos", "Golgari", "Gruul"]
+# the ten guilds of Ravnica, each with its two colors
+THEMATIC_SQ_COLORS = {
+    "Azorius": ["W", "U"], "Orzhov": ["W", "B"], "Boros": ["W", "R"], "Selesnya": ["W", "G"], "Dimir": ["U", "B"],
+    "Izzet": ["U", "R"], "Simic": ["U", "G"], "Rakdos": ["B", "R"], "Golgari": ["B", "G"], "Gruul": ["R", "G"],
+}
+THEMATIC_SQ_NAMES = list(THEMATIC_SQ_COLORS)
+STYLE_POINT_NAMES = ["Most Flavorful Play", "Clown Move", "Died With Style", "Poker Face"]
 
 @dataclass
 class Game:
